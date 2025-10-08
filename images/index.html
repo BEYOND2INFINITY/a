@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Shop Table</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+    :root {
+      --primary: #6366f1;
+      --secondary: #8b5cf6;
+      --accent: #06b6d4;
+      --bg: #f3f4f6;
+      --text: #1f2937;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(30px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    header {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      color: white;
+      text-align: center;
+      padding: 25px 10px;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .search-bar {
+      position: relative;
+      margin: 20px auto;
+      width: 90%;
+      animation: slideDown 1s ease;
+    }
+
+    @keyframes slideDown {
+      from {opacity: 0; transform: translateY(-15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 14px 50px 14px 50px;
+      border-radius: var(--radius);
+      border: none;
+      background: #f9fafb;
+      font-size: 16px;
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px #e2e8f0;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar input:focus {
+      outline: none;
+      box-shadow: 0 0 8px rgba(99,102,241,0.4);
+      background: #fff;
+    }
+
+    .search-bar svg {
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      stroke: var(--muted);
+    }
+
+    .clear-btn {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 22px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .clear-btn:hover {
+      color: var(--accent);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    thead {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #fff;
+    }
+
+    th, td {
+      padding: 16px 20px;
+      text-align: left;
+    }
+
+    th {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    tbody tr {
+      background: #ffffff;
+      transition: all 0.3s ease;
+    }
+
+    tbody tr:nth-child(even) {
+      background: #f9fafb;
+    }
+
+    tbody tr:hover {
+      background: #eef2ff;
+      transform: scale(1.01);
+      box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+    }
+
+    .item-name {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .price {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .thumb {
+      width: 70px;
+      height: 50px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 2px solid #e2e8f0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .thumb:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 10px rgba(6,182,212,0.4);
+    }
+
+    .no-results {
+      text-align: center;
+      color: var(--muted);
+      padding: 25px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 12px;
+      background: #f8fafc;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid #e5e7eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>Shop Items</header>
+
+    <div class="search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input id="searchInput" type="text" placeholder="Search item by name or price...">
+      <button id="clearBtn" class="clear-btn">×</button>
+    </div>
+
+    <table id="itemsTable">
+      <thead>
+        <tr>
+          <th>Item Name</th>
+          <th>Picture</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="item-name">Classic Leather Wallet</td>
+          <td><img class="thumb" src="https://via.placeholder.com/70x50?text=Wallet" alt="Wallet"></td>
+          <td class="price">TSh 35,000</td>
+        </tr>
+        <tr>
+          <td class="item-name">Wireless Earbuds</td>
+          <td><img class="thumb" src="https://via.placeholder.com/70x50?text=Earbuds" alt="Earbuds"></td>
+          <td class="price">TSh 120,000</td>
+        </tr>
+        <tr>
+          <td class="item-name">Stainless Water Bottle</td>
+          <td><img class="thumb" src="https://via.placeholder.com/70x50?text=Bottle" alt="Bottle"></td>
+          <td class="price">TSh 20,500</td>
+        </tr>
+        <tr>
+          <td class="item-name">Portable Power Bank</td>
+          <td><img class="thumb" src="https://via.placeholder.com/70x50?text=Power" alt="Power Bank"></td>
+          <td class="price">TSh 58,000</td>
+        </tr>
+        <tr>
+          <td class="item-name">Cotton T-Shirt (M)</td>
+          <td><img class="thumb" src="https://via.placeholder.com/70x50?text=Tshirt" alt="Tshirt"></td>
+          <td class="price">TSh 18,000</td>
+        </tr>
+        <tr>
+          <td class="item-name">Desk Lamp LED</td>
+          <td><img class="thumb" src="https://via.placeholder.com/70x50?text=Lamp" alt="Lamp"></td>
+          <td class="price">TSh 42,750</td>
+        </tr>
+        <tr>
+          <td class="item-name">Running Shoes — Size 42</td>
+          <td><img class="thumb" src="https://via.placeholder.com/70x50?text=Shoes" alt="Shoes"></td>
+          <td class="price">TSh 85,000</td>
+        </tr>
+        <tr>
+          <td class="item-name">Ceramic Coffee Mug</td>
+          <td><img class="thumb" src="https://via.placeholder.com/70x50?text=Mug" alt="Mug"></td>
+          <td class="price">TSh 12,300</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="noResults" class="no-results" style="display:none">No matching items found.</div>
+
+    <footer>© 2025 ShopSmart | Designed with ❤ by Sahnun Siraji Twaibu</footer>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    const clearBtn = document.getElementById('clearBtn');
+    const table = document.getElementById('itemsTable');
+    const rows = Array.from(table.querySelectorAll('tbody tr'));
+    const noResults = document.getElementById('noResults');
+
+    function normalize(text) {
+      return text.toLowerCase().trim();
+    }
+
+    function filterTable() {
+      const query = normalize(searchInput.value);
+      let visible = 0;
+
+      rows.forEach(row => {
+        const name = normalize(row.querySelector('.item-name').textContent);
+        const price = normalize(row.querySelector('.price').textContent);
+
+        if (!query || name.includes(query) || price.includes(query)) {
+          row.style.display = '';
+          visible++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      noResults.style.display = visible ? 'none' : 'block';
+    }
+
+    searchInput.addEventListener('input', filterTable);
+
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      filterTable();
+      searchInput.focus();
+    });
+
+    filterTable();
+  </script>
+</body>
+</html>

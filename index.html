@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pombe Shop - Authentic African Brews & Spirits</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #8B0000;
+            --secondary: #D4AF37;
+            --light: #F5F5F5;
+            --dark: #333;
+            --gray: #777;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: #a52a2a;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .contact-info span {
+            margin-right: 15px;
+        }
+
+        .social-icons a {
+            margin-left: 10px;
+            color: white;
+        }
+
+        .main-header {
+            padding: 15px 0;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 15px;
+            position: relative;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .waiter-btn {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        .waiter-btn:hover {
+            background-color: #a52a2a;
+            transform: translateY(-2px);
+        }
+
+        .message-btn {
+            background-color: #28a745;
+            color: white;
+            font-weight: 600;
+        }
+
+        .message-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            font-weight: 600;
+        }
+
+        .whatsapp-btn:hover {
+            background-color: #1da851;
+            transform: translateY(-2px);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1002;
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: var(--dark);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #eee;
+            transition: background-color 0.3s;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f5f5f5;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            margin-right: 20px;
+        }
+
+        .search-box input {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            width: 200px;
+            outline: none;
+        }
+
+        .search-box button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .cart-icon {
+            position: relative;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Search Box */
+        .mobile-search-box {
+            display: none;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .mobile-search-box input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 200px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+            padding: 10px;
+        }
+
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .product-price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .product-rating {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #ddd;
+            padding: 40px 0 20px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            nav ul li {
+                margin-left: 10px;
+            }
+            
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background-color: white;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 1001;
+                padding: 80px 20px 20px;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav ul li {
+                margin: 0 0 15px;
+                width: 100%;
+            }
+
+            nav ul li a {
+                display: block;
+                width: 100%;
+                text-align: left;
+            }
+
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                margin-top: 10px;
+                display: none;
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .search-box {
+                display: none;
+            }
+
+            .mobile-search-box {
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .top-bar .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-info {
+                margin-bottom: 5px;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> +255 123 456 789</span>
+                <span><i class="fas fa-envelope"></i> info@pombeshop.com</span>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">Pombe<span>Shop</span></div>
+                
+                <nav id="main-nav">
+                    <!-- Mobile Search Box -->
+                    <div class="mobile-search-box">
+                        <input type="text" id="mobile-search-input" placeholder="Search products...">
+                    </div>
+                    
+                    <ul>
+                        <li class="dropdown">
+                            <a href="#" class="waiter-btn">Call Waiter</a>
+                            <div class="dropdown-content">
+                                <a href="tel:+255761786294">+255 761 786 294</a>
+                                <a href="tel:+255754321098">+255 754 321 098</a>
+                                <a href="tel:+255713456789">+255 713 456 789</a>
+                                <a href="tel:+255768901234">+255 768 901 234</a>
+                            </div>
+                        </li>
+                        <li><a href="sms:+255761786294?body=nahitaji%20huduma" class="message-btn">Message</a></li>
+                        <li><a href="https://wa.me/255761786294?text=nahitaji%20huduma" class="whatsapp-btn" target="_blank">WhatsApp</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <div class="search-box">
+                        <input type="text" id="desktop-search-input" placeholder="Search products...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <div class="mobile-menu-btn" id="mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sample of Available Stock</h2>
+            </div>
+            
+            <div class="products-grid" id="products-grid">
+                <!-- Premium Liquors -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/hennessy.png" alt="Hennessy Cognac" onerror="this.src='https://via.placeholder.com/300x300?text=Hennessy'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Hennessy Cognac</h3>
+                        <div class="product-price">TZS 180000-250000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/daniel.png" alt="Jack Daniel's" onerror="this.src='https://via.placeholder.com/300x300?text=Jack+Daniel%27s'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Jack Daniel's</h3>
+                        <div class="product-price">TZS 13000-18000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/jagermeister.png" alt="Jägermeister" onerror="this.src='https://via.placeholder.com/300x300?text=J%C3%A4germeister'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Jägermeister</h3>
+                        <div class="product-price">TZS 13000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <!-- Alcoholic Beverages -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/dompo.png" alt="Dompo Spirit" onerror="this.src='https://via.placeholder.com/300x300?text=Dompo'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Dompo Spirit</h3>
+                        <div class="product-price">TZS 15,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/senetor.png" alt="Senetor" onerror="this.src='https://via.placeholder.com/300x300?text=Senetor'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Senetor Whisky</h3>
+                        <div class="product-price">TZS 25,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/konyagi.png" alt="Konyagi" onerror="this.src='https://via.placeholder.com/300x300?text=Konyagi'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Konyagi Spirit</h3>
+                        <div class="product-price">TZS 12,500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/savana.png" alt="Savana Cider" onerror="this.src='https://via.placeholder.com/300x300?text=Savana'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Savana Cider</h3>
+                        <div class="product-price">TZS 4,500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/safari.png" alt="Safari Lager" onerror="this.src='https://via.placeholder.com/300x300?text=Safari'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Safari Lager</h3>
+                        <div class="product-price">TZS 3,500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/pilsner.png" alt="Pilsner" onerror="this.src='https://via.placeholder.com/300x300?text=Pilsner'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pilsner Beer</h3>
+                        <div class="product-price">TZS 3,200</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/tusker.png" alt="Tusker" onerror="this.src='https://via.placeholder.com/300x300?text=Tusker'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Tusker Lager</h3>
+                        <div class="product-price">TZS 3,800</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/windhoek.png" alt="Windhoek" onerror="this.src='https://via.placeholder.com/300x300?text=Windhoek'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Windhoek Lager</h3>
+                        <div class="product-price">TZS 4,200</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/ndovu.png" alt="Ndovu" onerror="this.src='https://via.placeholder.com/300x300?text=Ndovu'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ndovu Malt Liquor</h3>
+                        <div class="product-price">TZS 3,500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/kibo.png" alt="Kibo" onerror="this.src='https://via.placeholder.com/300x300?text=Kibo'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Kibo Gold</h3>
+                        <div class="product-price">TZS 3,200</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/skol.png" alt="Skol" onerror="this.src='https://via.placeholder.com/300x300?text=Skol'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Skol Lager</h3>
+                        <div class="product-price">TZS 3,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/heineken.png" alt="Heineken" onerror="this.src='https://via.placeholder.com/300x300?text=Heineken'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Heineken</h3>
+                        <div class="product-price">TZS 4,500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/kilimanjaro.png" alt="Kilimanjaro" onerror="this.src='https://via.placeholder.com/300x300?text=Kilimanjaro'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Kilimanjaro Lager</h3>
+                        <div class="product-price">TZS 3,500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/tembo.png" alt="Tembo" onerror="this.src='https://via.placeholder.com/300x300?text=Tembo'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Tembo Beer</h3>
+                        <div class="product-price">TZS 3,200</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/castle.png" alt="Castle" onerror="this.src='https://via.placeholder.com/300x300?text=Castle'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Castle Lager</h3>
+                        <div class="product-price">TZS 3,800</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <!-- New Alcoholic Beverages -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/shampein.png" alt="Champagne" onerror="this.src='https://via.placeholder.com/300x300?text=Champagne'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Premium Champagne</h3>
+                        <div class="product-price">TZS 35,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/whysky.png" alt="Premium Whisky" onerror="this.src='https://via.placeholder.com/300x300?text=Premium+Whisky'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Premium Whisky</h3>
+                        <div class="product-price">TZS 45,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/guiness.png" alt="Malta Guiness" onerror="this.src='https://via.placeholder.com/300x300?text=Malta+Guiness'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Malta Guiness</h3>
+                        <div class="product-price">TZS 3,500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <!-- Non-Alcoholic Products -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/pepsi.png" alt="Pepsi" onerror="this.src='https://via.placeholder.com/300x300?text=Pepsi'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pepsi Cola</h3>
+                        <div class="product-price">TZS 2,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/cocacola.png" alt="Coca Cola" onerror="this.src='https://via.placeholder.com/300x300?text=Coca+Cola'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Coca Cola</h3>
+                        <div class="product-price">TZS 2,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/juice.png" alt="Fruit Juice" onerror="this.src='https://via.placeholder.com/300x300?text=Fruit+Juice'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Fruit Juice</h3>
+                        <div class="product-price">TZS 2,500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/energy.png" alt="Energy Drink" onerror="this.src='https://via.placeholder.com/300x300?text=Energy+Drink'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Energy Drink</h3>
+                        <div class="product-price">TZS 3,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/water.png" alt="Bottled Water" onerror="this.src='https://via.placeholder.com/300x300?text=Bottled+Water'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Bottled Water</h3>
+                        <div class="product-price">TZS 1,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/chips.png" alt="Potato Chips" onerror="this.src='https://via.placeholder.com/300x300?text=Potato+Chips'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Potato Chips</h3>
+                        <div class="product-price">TZS 2,500</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/meal.png" alt="Ready Meal" onerror="this.src='https://via.placeholder.com/300x300?text=Ready+Meal'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ready Meal</h3>
+                        <div class="product-price">TZS 8,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <!-- Nyama Choma -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/choma.png" alt="Nyama Choma" onerror="this.src='https://via.placeholder.com/300x300?text=Nyama+Choma'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Nyama Choma</h3>
+                        <div class="product-price">TZS 12,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <!-- New Food Items -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/snacks.png" alt="Assorted Snacks" onerror="this.src='https://via.placeholder.com/300x300?text=Assorted+Snacks'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Assorted Snacks</h3>
+                        <div class="product-price">TZS 5,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/ugali.png" alt="Ugali Nyama" onerror="this.src='https://via.placeholder.com/300x300?text=Ugali+Nyama'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ugali Nyama</h3>
+                        <div class="product-price">TZS 10,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="images/family.png" alt="Family Special Meal" onerror="this.src='https://via.placeholder.com/300x300?text=Family+Special+Meal'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Family Special Meal</h3>
+                        <div class="product-price">TZS 25,000</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <a href="#" class="btn">Agiza</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2023 Pombe Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+
+        // Mobile dropdown functionality
+        document.querySelectorAll('.dropdown').forEach(dropdown => {
+            dropdown.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                }
+            });
+        });
+
+        // Search functionality
+        function filterProducts(searchTerm) {
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const productName = card.querySelector('h3').textContent.toLowerCase();
+                
+                if (productName.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Desktop search
+        document.getElementById('desktop-search-input').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            filterProducts(searchTerm);
+        });
+
+        // Mobile search
+        document.getElementById('mobile-search-input').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase().trim();
+            filterProducts(searchTerm);
+        });
+    </script>
+</body>
+</html>
