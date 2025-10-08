@@ -258,6 +258,7 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--primary);
         }
 
         /* Mobile Search Box */
@@ -423,11 +424,6 @@
 
             .mobile-search-box {
                 display: block;
-            }
-            
-            .header-actions {
-                flex: 1;
-                justify-content: flex-end;
             }
         }
 
@@ -1109,9 +1105,16 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     
     <script>
-        // Mobile Menu Toggle
-        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
-            document.getElementById('main-nav').classList.toggle('active');
+        // Mobile Menu Toggle - FIXED
+        document.getElementById("mobile-menu-btn").addEventListener("click", function() {
+            document.getElementById("main-nav").classList.toggle("active");
+        });
+
+        // Close menu when any link is clicked
+        document.querySelectorAll("#main-nav a").forEach(a => {
+            a.addEventListener("click", () => {
+                document.getElementById("main-nav").classList.remove("active");
+            });
         });
 
         // Mobile dropdown functionality
