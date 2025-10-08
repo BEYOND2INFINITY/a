@@ -254,27 +254,6 @@
             color: var(--gray);
         }
 
-        .cart-icon {
-            position: relative;
-            font-size: 1.2rem;
-            color: var(--dark);
-        }
-
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
-            width: 18px;
-            height: 18px;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .mobile-menu-btn {
             display: none;
             font-size: 1.5rem;
@@ -445,6 +424,11 @@
             .mobile-search-box {
                 display: block;
             }
+            
+            .header-actions {
+                flex: 1;
+                justify-content: flex-end;
+            }
         }
 
         @media (max-width: 576px) {
@@ -510,10 +494,6 @@
                     <div class="search-box">
                         <input type="text" id="desktop-search-input" placeholder="Search products...">
                         <button><i class="fas fa-search"></i></button>
-                    </div>
-                    <div class="cart-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
                     </div>
                     <div class="mobile-menu-btn" id="mobile-menu-btn">
                         <i class="fas fa-bars"></i>
